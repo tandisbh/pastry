@@ -1,0 +1,321 @@
+/* -----------------------------------------------------
+   GLOBAL CSS VARIABLES (سه رنگ اصلی سیستم)
+   با تغییر مقادیر زیر، تمام ظاهر صفحه به روز می‌شود
+------------------------------------------------------ */
+:root {
+    --primary-pink: #FFD1DC;      /* صورتی ملایم - رنگ اصلی بکگراند و هدر */
+    --primary-cream: #FDFBD4;     /* کرم روشن - کارت‌ها و بخش‌های مکمل */
+    --primary-brown: #5C3A2E;      /* قهوه‌ای گرم - متن‌ها، دکمه‌ها و هدر تایپوگرافی */
+    --primary-pastel-blue: #B5E3E6;  /* جایگزین یکی از رنگ‌ها یا به عنوان رنگ اکسان */
+    
+    /* آکسان‌های کمکی (هماهنگ با برند) */
+    --accent-shadow: rgba(131, 105, 83, 0.15);
+    --white-trans: rgba(255, 250, 240, 0.9);
+    --card-radius: 28px;
+    --transition-default: all 0.25s ease-in-out;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--primary-pastel-blue);
+    font-family: system-ui, 'Segoe UI', 'Tahoma', 'Roboto', 'Vazirmatn', 'Poppins', sans-serif;
+    color: var(--primary-brown);
+    line-height: 1.5;
+    padding: 2rem 1.5rem;
+}
+
+/* کانتینر اصلی با عرض کنترل شده و کاملاً ریسپانسیو */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: var(--primary-pastel-blue);
+    border-radius: 48px 48px 36px 36px;
+}
+
+/* ---------- HEADER / هدر فروشگاه ---------- */
+.hero {
+    text-align: center;
+    padding: 2rem 1rem 1.8rem;
+    border-radius: 42px 42px 32px 32px;
+    background: linear-gradient(135deg, var(--primary-pink) 0%, #ffe4e9 100%);
+    margin-bottom: 2.5rem;
+    box-shadow: 0 12px 22px var(--accent-shadow);
+}
+
+.brand-name {
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--primary-brown);
+    text-shadow: 2px 2px 0 rgba(253, 251, 212, 0.7);
+    margin-bottom: 0.5rem;
+}
+
+.brand-sub {
+    font-size: 1.2rem;
+    font-weight: 500;
+    background-color: var(--primary-cream);
+    display: inline-block;
+    padding: 0.5rem 1.8rem;
+    border-radius: 60px;
+    color: #6b4e3a;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.tagline {
+    margin-top: 1rem;
+    font-size: 1rem;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    background: var(--white-trans);
+    padding: 0.5rem 1.2rem;
+    border-radius: 36px;
+    color: #5a3f2f;
+}
+
+/* ---------- گالری محصولات با شبکه ریسپانسیو ---------- */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0.5rem 0 2rem 0;
+}
+
+/* کارت محصول */
+.product-card {
+    background-color: var(--primary-cream);
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    box-shadow: 0 20px 30px -12px var(--accent-shadow);
+    transition: var(--transition-default);
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(1px);
+    border: 1px solid rgba(255, 250, 210, 0.7);
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 28px 36px -14px var(--accent-shadow);
+}
+
+/* محفظه تصویر با نسبت ثابت و تطبیق کامل */
+.product-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: #faf0e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 4px solid var(--primary-pink);
+}
+
+.product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.product-card:hover .product-img img {
+    transform: scale(1.03);
+}
+
+/* اطلاعات محصول */
+.product-info {
+    padding: 1.5rem 1.2rem 1.8rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-title {
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--primary-brown);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.product-desc {
+    font-size: 0.9rem;
+    color: #75604e;
+    margin-bottom: 1rem;
+    line-height: 1.45;
+}
+
+.product-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.feature-badge {
+    background-color: var(--primary-pink);
+    color: var(--primary-brown);
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    letter-spacing: 0.3px;
+}
+
+/* قیمت و دکمه سفارش */
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin-top: auto;
+    gap: 0.8rem;
+}
+
+.price {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #6a3e2a;
+    background: rgba(255, 209, 220, 0.5);
+    padding: 0.2rem 0.8rem;
+    border-radius: 44px;
+    line-height: 1.2;
+}
+
+.price small {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.order-btn {
+    background-color: var(--primary-brown);
+    border: none;
+    color: #FFF7E8;
+    font-weight: 600;
+    padding: 0.65rem 1.4rem;
+    border-radius: 60px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition-default);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.order-btn:hover {
+    background-color: #6e4e3a;
+    transform: scale(0.97);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* فوتر با نشانی و شبکه‌های اجتماعی */
+.footer {
+    margin-top: 3rem;
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #fdf7ea;
+    border-radius: 38px 38px 28px 28px;
+    border-top: 2px solid var(--primary-cream);
+    color: #5c4232;
+}
+
+.footer p {
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+}
+
+.footer small {
+    opacity: 0.8;
+    font-size: 0.8rem;
+}
+
+/* ------ Responsive breakpoints (موبایل، تبلت، لپ‌تاپ) ------ */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+    .brand-name {
+        font-size: 2rem;
+    }
+    .products-grid {
+        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    }
+    .product-title {
+        font-size: 1.4rem;
+    }
+    .price {
+        font-size: 1.5rem;
+    }
+    .hero {
+        padding: 1.2rem 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-name {
+        font-size: 1.7rem;
+    }
+    .product-info {
+        padding: 1rem;
+    }
+    .price-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .order-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* برای تبلت landscape و دسکتاپ کوچک */
+@media (min-width: 1024px) and (max-width: 1400px) {
+    .products-grid {
+        gap: 2rem;
+    }
+}
+
+/* بهبود ارتفاع در نمایشگرهای بزرگ */
+@media (min-width: 1600px) {
+    .container {
+        max-width: 1500px;
+    }
+    .products-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* انیمیشن ملایم برای بارگذاری */
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.product-card {
+    animation: fadeSlide 0.45s ease-out backwards;
+}
+
+.product-card:nth-child(1) { animation-delay: 0.05s; }
+.product-card:nth-child(2) { animation-delay: 0.1s; }
+.product-card:nth-child(3) { animation-delay: 0.15s; }
+.product-card:nth-child(4) { animation-delay: 0.2s; }
+.product-card:nth-child(5) { animation-delay: 0.25s; }
+.product-card:nth-child(6) { animation-delay: 0.3s; }
